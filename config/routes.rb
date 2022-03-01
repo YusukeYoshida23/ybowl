@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :bowling_centers
+  resources :scores
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

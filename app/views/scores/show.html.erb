@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ゲーム数</th>
+      <th>投球日</th>
+      <th>点数</th>
+      <th>編集</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scores.each do |score| %>
+      <tr>
+        <td><%= score.id %></td>
+        <td><%= score.created_at %></td>
+        <td><%= score.point %></td>
+        <td><%= link_to '編集', [:edit, score] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- ボウリング場に戻る or トップに戻るだけで良いかも -->
+<%= link_to 'トップに戻る', root_path %>

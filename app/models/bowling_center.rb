@@ -1,0 +1,2 @@
+class BowlingCenter < ApplicationRecord
+end

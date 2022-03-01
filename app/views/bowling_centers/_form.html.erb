@@ -1,0 +1,36 @@
+<%= form_with(model: bowling_center) do |form| %>
+  <% if bowling_center.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bowling_center.errors.count, "error") %> prohibited this bowling_center from being saved:</h2>
+
+      <ul>
+        <% bowling_center.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      <th><%= form.label :name , "ボウリング場名" %></th>
+      <td><%= form.text_field :name %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :address , "住所" %></th>
+      <td><%= form.text_field :address %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :phone_number , "電話番号" %></th>
+      <td><%= form.text_field :phone_number %></td>
+    </tr>
+    <tr>
+      <th><%= form.label :hp , "ホームページ" %></th>
+      <td><%= form.text_field :hp %></td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,2 +1,23 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+<div id="target" class="embed-responsive embed-responsive-4by3">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3_j87Ua6s9RBH-qj7ePS17WubC0HMj2A&callback=initMap" async defer></script>
+  <script>
+    function initMap() {
+      'use strict';
+
+      var target = document.getElementById('target');
+      var map;
+      var tokyo = {lat: 35.681167, lng: 139.767052};
+
+      map = new google.maps.Map(target, {
+        center: tokyo,
+        zoom: 0
+      });
+    }
+  </script>
+  <%# 
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79235.31499061477!2d135.4790260531383!3d34.709832476132675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e69367fac88d%3A0x290e09bb55a16cc3!2z44Op44Km44Oz44OJ44Ov44OzIOaiheeUsOW6lw!5e0!3m2!1sja!2sjp!4v1645670428027!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
+   %>
+
+</div>
+  <p><%= link_to "ボウリング場を登録する", new_bowling_center_path %></p>
+  <p><%= link_to "スコア一覧を見る", scores_path %></p>

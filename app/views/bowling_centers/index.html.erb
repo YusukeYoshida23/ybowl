@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bowling Centers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bowling_centers.each do |bowling_center| %>
+      <tr>
+        <td><%= link_to 'Show', bowling_center %></td>
+        <td><%= link_to 'Edit', edit_bowling_center_path(bowling_center) %></td>
+        <td><%= link_to 'Destroy', bowling_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bowling Center', new_bowling_center_path %>
