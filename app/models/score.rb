@@ -1,3 +1,4 @@
 class Score < ApplicationRecord
-  belong_to :user
+  belongs_to :user
+  belongs_to :bowling_center
 end
