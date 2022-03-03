@@ -13,20 +13,19 @@
           </tr>
         </thead>
         <tbody>
-          <% @bowling_centers.each do |bowling_center| %>
             <tr>
-              <td><%= bowling_center.name %></td>
-              <td><%= bowling_center.address %></td>
-              <td><%= bowling_center.phone_number %></td>
-              <td><%= bowling_center.hp %></td>
+              <td><%= @bowling_center.name %></td>
+              <td><%= @bowling_center.address %></td>
+              <td><%= @bowling_center.phone_number %></td>
+              <td><%= @bowling_center.hp %></td>
               <td><%= link_to '編集', [:edit, :bowling_center] %></td>
             </tr>
-          <% end %>
         </tbody>
       </table>
     </div>
     <div class="col">
-      <p><%= link_to "スコア一覧を見る", scores_path, model: @scores %></p>
+      <p><%= link_to "スコアを入力する", new_bowling_center_score_path(@bowling_center) %></p>
+      <p><%= link_to "スコア一覧を見る", bowling_center_score_path(@bowling_center) %></p>
     </div>
   </div>
 </div>

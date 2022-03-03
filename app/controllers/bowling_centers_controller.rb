@@ -8,8 +8,8 @@ class BowlingCentersController < ApplicationController
 
   # GET /bowling_centers/1 or /bowling_centers/1.json
   def show
-    @bowling_centers = BowlingCenter.all
-    @scores = Score.all
+    @bowling_center = BowlingCenter.find(params[:id])
+    @scores = @bowling_center.scores.all
   end
 
   # GET /bowling_centers/new

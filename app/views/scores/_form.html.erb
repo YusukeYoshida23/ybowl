@@ -1,4 +1,4 @@
-<%= form_with(model: score) do |form| %>
+<%= form_with(model: [@bowling_center, @score]) do |form| %>
   <% if score.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
@@ -17,6 +17,9 @@
       <td><%= form.number_field :point %></td>
     </tr>
   </table>
+
+    <%= hidden_field_tag :id, @bowling_center.id %>
+    <%= hidden_field_tag :name, @bowling_center.name %>
 
   <div class="actions">
     <%= form.submit %>

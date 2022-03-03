@@ -11,14 +11,14 @@
   </thead>
 
   <tbody>
-    <% @scores.each do |score| %>
+
       <tr>
-        <td><%= score.id %></td>
-        <td><%= score.created_at %></td>
-        <td><%= score.point %></td>
-        <td><%= link_to '編集', [:edit, score] %></td>
+        <td><%= @score.id %></td>
+        <td><%= @score.created_at %></td>
+        <td><%= @score.point %></td>
+        <td><%= link_to '編集', edit_bowling_center_score_path(@score) %></td>
       </tr>
-    <% end %>
+
   </tbody>
 </table>
 

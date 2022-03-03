@@ -1,5 +1,7 @@
-<h1>New Score</h1>
+<h1>点数入力</h1>
+
+<h2>ボウリング場名: <%= @bowling_center.name %></h2>
 
 <%= render 'form', score: @score %>
 
-<%= link_to 'Back', scores_path %>
+<%= link_to 'Back', bowling_centers_path %>
