@@ -26,12 +26,13 @@ class ScoresController < ApplicationController
   def create
     @score = Score.new(score_params)
     @bowling_center = BowlingCenter.find(params[:bowling_center_id])
+    @score.bowling_center_id = @bowling_center.id
+  #  @bowling_center.score_id = @score.id
     @score.user_id = current_user.id
-    binding.pry
 
     respond_to do |format|
-      if @score.save
-        format.html { redirect_to score_url(@score), notice: "Score was successfully created." }
+      if @score.save!
+        format.html { redirect_to bowling_center_score_path(@score, @bowling_center), notice: "Score was successfully created." }
         format.json { render :show, status: :created, location: @score }
       else
         format.html { render :new, status: :unprocessable_entity }

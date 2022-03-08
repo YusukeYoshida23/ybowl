@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_02_132305) do
+ActiveRecord::Schema.define(version: 2022_03_08_082001) do
 
   create_table "bowling_centers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_03_02_132305) do
     t.string "address"
     t.string "phone_number"
     t.string "hp"
+    t.integer "score_id"
   end
 
   create_table "scores", force: :cascade do |t|
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 2022_03_02_132305) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "point"
     t.integer "user_id"
+    t.integer "bowling_center_id"
     t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
