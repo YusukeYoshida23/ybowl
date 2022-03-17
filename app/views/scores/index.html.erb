@@ -5,22 +5,39 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>ゲーム数</th>
+      <th>投球日時</th>
+      <th>点数</th>
+      <th>編集</th>
+      <th>削除</th>
     </tr>
   </thead>
 
   <tbody>
     <% @scores.each do |score| %>
       <tr>
-        <td><%= link_to 'Show', score %></td>
-        <td><%= link_to 'Edit', edit_score_path(score) %></td>
-        <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= score.id %></td>
+        <td><%= score.created_at %></td>
+        <td><%= score.point %></td>
+        <td><%= link_to '編集', edit_bowling_center_score_path(id: score) %></td>
+        <td><%= link_to '削除', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<table>
+  <tr>
+    <th>最高点</th>
+    <td>〇〇○</td>
+  </tr>
+  <tr>
+    <th>平均点</th>
+    <td>○○○.○</td>
+  </tr>
+</table>
+
 <br>
 
-<%= link_to '点数を登録する', new_score_path %>
+<%= link_to '点数を登録する', new_bowling_center_score_path %>
 <%= link_to 'トップ画面に戻る', root_path %>

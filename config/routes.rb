@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :bowling_centers do
-    resources :scores, :except => :index
+    resources :scores
   end
   
   devise_for :users, controllers: {

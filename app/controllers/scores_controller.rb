@@ -4,6 +4,7 @@ class ScoresController < ApplicationController
   # GET /scores or /scores.json
   def index
     @scores = Score.all
+    @bowling_center = BowlingCenter.find(params[:bowling_center_id])
   end
 
   # GET /scores/1 or /scores/1.json
@@ -20,6 +21,8 @@ class ScoresController < ApplicationController
 
   # GET /scores/1/edit
   def edit
+    @bowling_center = BowlingCenter.find(params[:bowling_center_id])
+    @score = Score.find(params[:id])
   end
 
   # POST /scores or /scores.json
@@ -32,7 +35,7 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if @score.save!
-        format.html { redirect_to bowling_center_score_path(@score, @bowling_center), notice: "Score was successfully created." }
+        format.html { redirect_to bowling_center_score_path(@bowling_center, @score), notice: "Score was successfully created." }
         format.json { render :show, status: :created, location: @score }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,9 +46,13 @@ class ScoresController < ApplicationController
 
   # PATCH/PUT /scores/1 or /scores/1.json
   def update
+    @bowling_center = BowlingCenter.find(params[:bowling_center_id])
+    @score.bowling_center_id = @bowling_center.id
+    @score.user_id = current_user.id
+    
     respond_to do |format|
       if @score.update(score_params)
-        format.html { redirect_to score_url(@score), notice: "Score was successfully updated." }
+        format.html { redirect_to bowling_center_score_path(@bowling_center, @score), notice: "Score was successfully updated." }
         format.json { render :show, status: :ok, location: @score }
       else
         format.html { render :edit, status: :unprocessable_entity }
