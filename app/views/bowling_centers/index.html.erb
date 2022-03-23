@@ -12,9 +12,8 @@
   <tbody>
     <% @bowling_centers.each do |bowling_center| %>
       <tr>
-        <td><%= link_to 'Show', bowling_center %></td>
-        <td><%= link_to 'Edit', edit_bowling_center_path(bowling_center) %></td>
-        <td><%= link_to 'Destroy', bowling_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to bowling_center.name, bowling_center %></td>
+        <td><%= link_to '削除', bowling_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +21,4 @@
 
 <br>
 
-<%= link_to 'New Bowling Center', new_bowling_center_path %>
+<%= link_to 'トップに戻る',root_path %>

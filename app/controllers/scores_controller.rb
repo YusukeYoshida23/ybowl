@@ -35,8 +35,8 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if @score.save!
-        format.html { redirect_to bowling_center_score_path(@bowling_center, @score), notice: "Score was successfully created." }
-        format.json { render :show, status: :created, location: @score }
+        format.html { redirect_to bowling_center_scores_path(@bowling_center, @score), notice: "Score was successfully created." }
+        format.json { render :index, status: :created, location: @score }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @score.errors, status: :unprocessable_entity }
