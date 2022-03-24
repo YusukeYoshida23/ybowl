@@ -1,23 +1,56 @@
-<div id="target" class="embed-responsive embed-responsive-4by3">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3_j87Ua6s9RBH-qj7ePS17WubC0HMj2A&callback=initMap" async defer></script>
-  <script>
-    function initMap() {
-      'use strict';
+<div id="map"></div>
 
-      var target = document.getElementById('target');
-      var map;
-      var tokyo = {lat: 35.681167, lng: 139.767052};
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3_j87Ua6s9RBH-qj7ePS17WubC0HMj2A&libraries=places&callback=initMap">
+</script>
 
-      map = new google.maps.Map(target, {
-        center: tokyo,
-        zoom: 0
-      });
+<script>
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+let map;
+let service;
+let infowindow;
+
+function initMap() {
+  const sydney = new google.maps.LatLng(-33.867, 151.195);
+
+  infowindow = new google.maps.InfoWindow();
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: sydney,
+    zoom: 15,
+  });
+
+  const request = {
+    query: "Museum of Contemporary Art Australia",
+    fields: ["name", "geometry"],
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.findPlaceFromQuery(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+      for (let i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+
+      map.setCenter(results[0].geometry.location);
     }
-  </script>
-  <%# 
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79235.31499061477!2d135.4790260531383!3d34.709832476132675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e69367fac88d%3A0x290e09bb55a16cc3!2z44Op44Km44Oz44OJ44Ov44OzIOaiheeUsOW6lw!5e0!3m2!1sja!2sjp!4v1645670428027!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
-   %>
+  });
+}
 
-</div>
+function createMarker(place) {
+  if (!place.geometry || !place.geometry.location) return;
+
+  const marker = new google.maps.Marker({
+    map,
+    position: place.geometry.location,
+  });
+
+  google.maps.event.addListener(marker, "click", () => {
+    infowindow.setContent(place.name || "");
+    infowindow.open(map);
+  });
+}
+</script>
   <p><%= link_to "ボウリング場を登録する", new_bowling_center_path %></p>
   <p><%= link_to "ボウリング場一覧", bowling_centers_path %></p>
