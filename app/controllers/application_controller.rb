@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: %i(avatar))
+    devise_parameter_sanitizer.permit(:account_update, keys: %i(image))
   end
 
 end
