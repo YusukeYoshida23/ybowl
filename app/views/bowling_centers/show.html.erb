@@ -24,11 +24,11 @@
       </table>
     </div>
 
-<script type="text/javascript">
-  function initMap() {}
+    <div id="map"></div>
 
-  $(function(){
-         function initMap() {
+<script type="text/javascript">
+
+     function initMap() {
        var test = {lat: <%= @bowling_center.latitude %>, lng: <%= @bowling_center.longitude %>};
        var map = new google.maps.Map(document.getElementById('map'), {
                  zoom: 15, 
@@ -49,9 +49,10 @@
          infowindow.open(map, marker);
        });
      }
-  })
 
-  initMap();
+    window.onload = function () {
+        initMap();
+    }
   
 </script>
 
@@ -64,7 +65,7 @@
          width: 70%;}
 </style>
 
-<div id="map"></div>
+
 
     <div class="col">
       <p><%= link_to "スコアを入力する", new_bowling_center_score_path(@bowling_center) %></p>
