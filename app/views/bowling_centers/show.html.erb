@@ -26,47 +26,6 @@
 
     <div id="map"></div>
 
-<script type="text/javascript">
-
-     function initMap() {
-       var test = {lat: <%= @bowling_center.latitude %>, lng: <%= @bowling_center.longitude %>};
-       var map = new google.maps.Map(document.getElementById('map'), {
-                 zoom: 15, 
-                 center: test
-                 });
-       var transitLayer = new google.maps.TransitLayer();
-       transitLayer.setMap(map);
-       var contentString = '住所：<%= @bowling_center.address %>';
-       var infowindow = new google.maps.InfoWindow({
-         content: contentString
-       });
-       var marker = new google.maps.Marker({
-                     position:test,
-                     map: map,
-                     title: contentString
-                   });
-       marker.addListener('click', function() {
-         infowindow.open(map, marker);
-       });
-     }
-
-    window.onload = function () {
-        initMap();
-    }
-  
-</script>
-
-<script async defer
-              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
-</script>
-
-<style type="text/css">
-  #map { height: 200px;
-         width: 70%;}
-</style>
-
-
-
     <div class="col">
       <p><%= link_to "スコアを入力する", new_bowling_center_score_path(@bowling_center) %></p>
       <p><%= link_to "スコア一覧を見る", bowling_center_scores_path(@bowling_center) %></p>
@@ -75,3 +34,33 @@
 </div>
 
 <p><%= link_to 'トップに戻る', root_path %></p>
+
+<script type="text/javascript">
+  function initMap() {
+    var test = {lat: <%= @bowling_center.latitude %>, lng: <%= @bowling_center.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15, 
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+    var contentString = '住所：<%= @bowling_center.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+  window.onload = function () {
+      initMap();
+  }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
+</script>
