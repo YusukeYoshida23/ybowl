@@ -4,8 +4,13 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :アカウント名 %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
     <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
@@ -17,13 +22,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :パスワード(確認) %><br />
+    <%= f.label :パスワード%><i>(確認)</i><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
  <div class="field">
     <%= f.label :プロフィール画像 %><br />
     <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :お気に入りのボール %><br />
+    <%= f.text_field :favorite_ball, autocomplete: "favorite_ball" %>
   </div>
 
   <div class="actions">
