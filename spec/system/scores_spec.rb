@@ -6,8 +6,8 @@ RSpec.describe "Scores", type: :system do
   let(:bowling_center) { create(:bowling_center)}
 
   before do
-    get score_path(score.id)
-    visit score_path(score.id)
+    get bowling_center_score_path(bowling_center.id, score.id)
+    visit bowling_center_score_path(bowling_center.id, score.id)
   end
 
   describe "GET #show" do
