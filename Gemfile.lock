@@ -115,6 +115,11 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.8.1)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.4)
     geocoder (1.7.2)
     globalid (1.0.0)
@@ -279,6 +284,7 @@ DEPENDENCIES
   capybara
   devise
   dotenv-rails
+  factory_bot_rails
   geocoder
   jbuilder (~> 2.7)
   jquery-rails
