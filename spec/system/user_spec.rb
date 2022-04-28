@@ -24,7 +24,7 @@ RSpec.describe "User", type: :system do
       end
 
       it "「編集」が機能している" do
-        click_link '編集'
+        click_on '編集'
         expect(current_path).to eq edit_user_registration_path
       end
     end
@@ -33,28 +33,11 @@ RSpec.describe "User", type: :system do
   describe "#Edit" do
     context 'GET' do
       before do
-        get edit_user_registration
+        get edit_user_registration_path
       end
       it "returns http success" do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(302)
       end
     end
-
-    context "VISIT" do
-      before do
-        visit edit_user_registration
-      end
-
-      it "returns user information" do
-        expect(page).to have_content(user.name)
-        expect(page).to have_content(user.email)
-        expect(page).to have_content(user.favorite_ball)
-      end
-    end
-    before do
-      visit edit_user_registration 
-    end
-    
-
   end
 end
