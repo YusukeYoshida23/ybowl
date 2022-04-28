@@ -19,6 +19,8 @@ RSpec.describe "BowlingCenters", type: :system do
       expect(page).to have_content(bowling_center.phone_number)
       expect(page).to have_content(bowling_center.hp)
     end
+
+    # it '入力した住所を基に地図が表示される' do end
   end
   
 end
