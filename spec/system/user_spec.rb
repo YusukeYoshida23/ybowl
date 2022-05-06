@@ -15,6 +15,7 @@ RSpec.describe "User", type: :system do
 
     context "VISIT" do
       before do
+        login user
         visit user_path(user.id)
       end
       it "returns user information" do
