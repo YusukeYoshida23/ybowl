@@ -9,7 +9,7 @@ class BowlingCentersController < ApplicationController
   # GET /bowling_centers/1 or /bowling_centers/1.json
   def show
     @bowling_center = BowlingCenter.find(params[:id])
-    @scores = @bowling_center.scores.all
+    @score = Score.find(params[:id])
   end
 
   # GET /bowling_centers/new

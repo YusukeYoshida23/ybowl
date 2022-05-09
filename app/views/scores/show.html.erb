@@ -1,26 +1,45 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Scores</h1>
+
 <table>
   <thead>
     <tr>
       <th>ゲーム数</th>
-      <th>投球日</th>
+      <th>投球日時</th>
       <th>点数</th>
       <th>編集</th>
+      <th>削除</th>
     </tr>
   </thead>
 
   <tbody>
-
+    <% @score.each do |score| %>
       <tr>
-        <td><%= @score.id %></td>
-        <td><%= @score.created_at %></td>
-        <td><%= @score.point %></td>
-        <td><%= link_to '編集', edit_bowling_center_score_path(@score) %></td>
+        <td><%= score.id %></td>
+        <td><%= score.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+        <td><%= score.point %></td>
+        <td><%= link_to '編集', edit_bowling_center_score_path(id: score) %></td>
+        <td><%= link_to '削除', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-
+    <% end %>
   </tbody>
 </table>
 
-<!-- ボウリング場に戻る or トップに戻るだけで良いかも -->
-<%= link_to 'トップに戻る', root_path %>
+<table>
+  <tr>
+    <th>MAX</th>
+    <td><%= Score.maximum('point') %>点</td>
+  </tr>
+  <tr>
+    <th>AVE</th>
+    <td><%= Score.average('point').floor %>点</td>
+  </tr>
+</table>
+
+<br>
+
+<%= link_to 'スコアを入力する', new_bowling_center_score_path %>
+<%= link_to 'ボウリング場詳細に戻る', @bowling_center %>
+<%= link_to 'ボウリング場一覧', bowling_centers_path %>
+<%= link_to 'トップ画面に戻る', root_path %>

@@ -10,7 +10,7 @@ class ScoresController < ApplicationController
   # GET /scores/1 or /scores/1.json
   def show
     @bowling_center = BowlingCenter.find(params[:bowling_center_id])
-    @score = Score.find(params[:id])
+    @score = Score.where(id: params[:id])
   end
 
   # GET /scores/new
@@ -30,8 +30,8 @@ class ScoresController < ApplicationController
     @score = Score.new(score_params)
     @bowling_center = BowlingCenter.find(params[:bowling_center_id])
     @score.bowling_center_id = @bowling_center.id
-  #  @bowling_center.score_id = @score.id
     @score.user_id = current_user.id
+    binding.pry
 
     respond_to do |format|
       if @score.save!
