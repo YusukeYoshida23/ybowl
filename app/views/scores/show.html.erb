@@ -14,9 +14,9 @@
   </thead>
 
   <tbody>
-    <% @score.each do |score| %>
+    <% @score.each.with_index(1) do |score, index| %>
       <tr>
-        <td><%= score.id %></td>
+        <td><%= index %></td>
         <td><%= score.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
         <td><%= score.point %></td>
         <td><%= link_to '編集', edit_bowling_center_score_path(id: score) %></td>
@@ -29,11 +29,11 @@
 <table>
   <tr>
     <th>MAX</th>
-    <td><%= Score.maximum('point') %>点</td>
+    <td><%= @score.maximum('point') %>点</td>
   </tr>
   <tr>
     <th>AVE</th>
-    <td><%= Score.average('point').floor %>点</td>
+    <td><%= @score.average('point').floor %>点</td>
   </tr>
 </table>
 

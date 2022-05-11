@@ -12,8 +12,8 @@
   <tbody>
     <% @bowling_centers.each do |bowling_center| %>
       <tr>
-        <td><%= link_to bowling_center.name, bowling_center %></td>
-        <td><%= link_to '削除', bowling_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class=h2><%= link_to bowling_center.name, bowling_center %></td>
+        <td class=h3><%= link_to '削除', bowling_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
