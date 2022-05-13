@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "BowlingCenters", type: :system do
-  let(:bowling_center) { create(:bowling_center)}
-  let(:score) { create(:score)}
+  let!(:bowling_center) { create(:bowling_center)}
+  let!(:score) { create(:score)}
+
+  binding.pry
 
   describe "GET #index" do
     before do
@@ -15,19 +17,19 @@ RSpec.describe "BowlingCenters", type: :system do
     end
 
     it "ボウリング場名をクリックするとボウリング場詳細に移動する" do
-      find(".h2").click
+      click_on bowling_center.name
       expect(current_path).to eq bowling_center_path
     end
   
   #削除が機能している
   
     it "「ボウリング場を登録する」が機能している" do
-      click_on 'ボウリング場を登録する'
+      click_button "ボウリング場を登録する"
       expect(current_path).to eq new_bowling_center_path
     end
 
     it "「トップに戻る」が機能している" do
-      click_on 'トップに戻る'
+      click_button "トップに戻る"
       expect(current_path).to eq root_path
     end
   end
@@ -58,12 +60,10 @@ RSpec.describe "BowlingCenters", type: :system do
     end
 
     it "returns http success" do
-      get score.id
       expect(response).to have_http_status(200)
     end
 
     it "returns bowling_center information" do
-      get score.id
       expect(page).to have_content(bowling_center.name)
       expect(page).to have_content(bowling_center.address)
       expect(page).to have_content(bowling_center.phone_number)

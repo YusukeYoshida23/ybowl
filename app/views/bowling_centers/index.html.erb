@@ -1,25 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Bowling Centers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bowling_centers.each do |bowling_center| %>
+<div class="container justify-content-center">
+  <p id="notice"><%= notice %></p>
+  <h1 class="text-center mb-3">ボウリング場一覧</h1>
+  <table id="form">
+    <thead>
       <tr>
-        <td class=h2><%= link_to bowling_center.name, bowling_center %></td>
-        <td class=h3><%= link_to '削除', bowling_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'ボウリング場を登録する', new_bowling_center_path %>
-<%= link_to 'トップに戻る', root_path %>
+    </thead>
+    <tbody>
+      <% @bowling_centers.each do |bowling_center| %>
+        <tr>
+          <td class="h3"><%= link_to bowling_center.name, bowling_center %></td>
+          <td class="h5"><%= link_to '削除', bowling_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center mt-3">
+    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'ボウリング場を登録する', new_bowling_center_path %></button>
+    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'トップに戻る', root_path %></button>
+  </div>
+</div>

@@ -63,3 +63,5 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 gem "aws-sdk-s3", require: false
 gem 'geocoder'
+gem 'mini_magick'
+gem 'image_processing'

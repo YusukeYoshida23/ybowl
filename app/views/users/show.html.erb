@@ -1,13 +1,18 @@
-<h1>プロフィール</h1>
+<div class="container justify-content-center">
+  <h1 class="text-center">プロフィール</h1>
 
-<% if @user.image.attached? %>
-  <%= image_tag @user.image %>
-<% end %>
+  <div class="text-center">
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image, class:"text-center user-icon" %>
+    <% end %>
+  </div>
+  <br>
+  <p class="text-center">アカウント名：<%= @user.name %></p>
+  <p class="text-center">メールアドレス：<%= @user.email %></p>
+  <p class="text-center">お気に入りのボール：<%= @user.favorite_ball %></p>
 
-<p>アカウント名：<%= @user.name %></p>
-<p>メールアドレス：<%= @user.email %></p>
-<p>お気に入りのボール：<%= @user.favorite_ball %></p>
-
-
-<%= link_to "編集", edit_user_registration_path %>
-<%= link_to "トップに戻る", root_path %>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-primary m-3"><%= link_to "編集", edit_user_registration_path %></button>
+    <button type="button" class="btn btn-outline-primary m-3"><%= link_to "トップに戻る", root_path %></button>
+  </div>
+</div>
