@@ -1,27 +1,29 @@
-<%= form_with(model: [@bowling_center, @score]) do |form| %>
-  <% if score.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
+<div class="text-center">
+  <%= form_with(model: [@bowling_center, @score]) do |form| %>
+    <% if score.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
 
-      <ul>
-        <% score.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% score.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <table id="form">
+      <tr>
+        <th><%= form.label :point , "点数"%></th>
+        <td><%= form.number_field :point %></td>
+      </tr>
+    </table>
+
+      <%= hidden_field_tag :id, @bowling_center.id %>
+      <%= hidden_field_tag :name, @bowling_center.name %>
+
+    <div class="actions mt-3">
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <table>
-    <tr>
-      <th><%= form.label :point , "点数"%></th>
-      <td><%= form.number_field :point %></td>
-    </tr>
-  </table>
-
-    <%= hidden_field_tag :id, @bowling_center.id %>
-    <%= hidden_field_tag :name, @bowling_center.name %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

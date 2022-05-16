@@ -12,12 +12,16 @@ RSpec.describe "Home", type: :system do
   end
 
   it "「ボウリング場を登録する」が機能している" do
-    click_button "ボウリング場を登録する"
+    within("#new_bowling_center") do
+      click_on "ボウリング場を登録する"
+    end
     expect(current_path).to eq new_bowling_center_path
   end
 
   it "「ボウリング場一覧」が機能している" do
-    click_button "ボウリング場一覧"
+    within("#bowling_centers") do
+      click_on "ボウリング場一覧"
+    end
     expect(current_path).to eq bowling_centers_path
   end
 end

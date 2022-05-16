@@ -25,7 +25,9 @@ RSpec.describe "User", type: :system do
       end
 
       it "「編集」が機能している" do
-        click_button "編集"
+        within("#edit_user") do
+          click_on "編集"
+        end
         expect(current_path).to eq edit_user_registration_path
       end
     end

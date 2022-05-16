@@ -1,9 +1,10 @@
-<h1>点数入力</h1>
+<div class="container justify-content-center">
+  <h1 class="text-center mb-3">スコア入力</h1>
+  <%= render 'form', score: @score %>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'ボウリング場詳細に戻る', @bowling_center %></button>
+    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'ボウリング場一覧', bowling_centers_path %></button>
+    <button type="button" class="btn btn-outline-dark m-3"><%= link_to 'トップに戻る', root_path %></button>
+  </div>
+</div>
 
-<h2>ボウリング場名: <%= @bowling_center.name %></h2>
-
-<%= render 'form', score: @score %>
-
-<%= link_to 'ボウリング場詳細に戻る', @bowling_center %>
-<%= link_to 'ボウリング場一覧に戻る', bowling_centers_path %>
-<%= link_to 'トップに戻る', root_path %>

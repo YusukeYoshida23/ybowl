@@ -4,8 +4,6 @@ RSpec.describe "BowlingCenters", type: :system do
   let!(:bowling_center) { create(:bowling_center)}
   let!(:score) { create(:score)}
 
-  binding.pry
-
   describe "GET #index" do
     before do
       get bowling_centers_path
@@ -24,12 +22,16 @@ RSpec.describe "BowlingCenters", type: :system do
   #削除が機能している
   
     it "「ボウリング場を登録する」が機能している" do
-      click_button "ボウリング場を登録する"
+      within("#new_bowling_center") do
+        click_on "ボウリング場を登録する"
+      end
       expect(current_path).to eq new_bowling_center_path
     end
 
     it "「トップに戻る」が機能している" do
-      click_button "トップに戻る"
+      within("#root") do
+        click_on "トップに戻る"
+      end
       expect(current_path).to eq root_path
     end
   end

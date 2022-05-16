@@ -1,7 +1,7 @@
+<p id="notice"><%= notice %></p>
 <div class="container justify-content-center">
-  <p id="notice"><%= notice %></p>
   <h1 class="text-center mb-3">ボウリング場一覧</h1>
-  <table id="form">
+  <table id="form" class="table">
     <thead>
       <tr>
         <th colspan="2"></th>
@@ -17,7 +17,7 @@
     </tbody>
   </table>
   <div class="d-flex justify-content-center mt-3">
-    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'ボウリング場を登録する', new_bowling_center_path %></button>
-    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'トップに戻る', root_path %></button>
+    <button type="button" class="btn btn-primary m-3" id="new_bowling_center"><%= link_to 'ボウリング場を登録する', new_bowling_center_path %></button>
+    <button type="button" class="btn btn-outline-dark m-3" id="root"><%= link_to 'トップに戻る', root_path %></button>
   </div>
 </div>
