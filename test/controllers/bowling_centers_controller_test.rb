@@ -17,7 +17,7 @@ class BowlingCentersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create bowling_center" do
     assert_difference('BowlingCenter.count') do
-      post bowling_centers_url, params: { bowling_center: {  } }
+      post bowling_centers_url, params: { bowling_center: {} }
     end
 
     assert_redirected_to bowling_center_url(BowlingCenter.last)
@@ -34,7 +34,7 @@ class BowlingCentersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update bowling_center" do
-    patch bowling_center_url(@bowling_center), params: { bowling_center: {  } }
+    patch bowling_center_url(@bowling_center), params: { bowling_center: {} }
     assert_redirected_to bowling_center_url(@bowling_center)
   end
 

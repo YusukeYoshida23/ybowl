@@ -15,7 +15,7 @@
     <table id="form">
       <tr>
         <th><%= form.label :point , "点数"%></th>
-        <td><%= form.number_field :point %></td>
+        <td><%= form.number_field :point, min:0, max:300 %></td>
       </tr>
     </table>
 

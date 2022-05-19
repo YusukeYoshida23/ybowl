@@ -15,13 +15,13 @@ RSpec.describe "Home", type: :system do
     within("#new_bowling_center") do
       click_on "ボウリング場を登録する"
     end
-    expect(current_path).to eq new_bowling_center_path
+    expect(page).to have_current_path new_bowling_center_path, ignore_query: true
   end
 
   it "「ボウリング場一覧」が機能している" do
     within("#bowling_centers") do
       click_on "ボウリング場一覧"
     end
-    expect(current_path).to eq bowling_centers_path
+    expect(page).to have_current_path bowling_centers_path, ignore_query: true
   end
 end

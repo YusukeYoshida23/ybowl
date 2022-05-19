@@ -8,8 +8,9 @@ RSpec.describe "User", type: :system do
       before do
         get user_path(user.id)      
       end
+
       it "returns http success" do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -18,6 +19,7 @@ RSpec.describe "User", type: :system do
         login user
         visit user_path(user.id)
       end
+
       it "returns user information" do
         expect(page).to have_content(user.name)
         expect(page).to have_content(user.email)
@@ -28,7 +30,7 @@ RSpec.describe "User", type: :system do
         within("#edit_user") do
           click_on "編集"
         end
-        expect(current_path).to eq edit_user_registration_path
+        expect(page).to have_current_path edit_user_registration_path, ignore_query: true
       end
     end
   end
@@ -38,8 +40,9 @@ RSpec.describe "User", type: :system do
       before do
         get edit_user_registration_path
       end
+
       it "returns http success" do
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(:found)
       end
     end
   end

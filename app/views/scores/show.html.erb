@@ -17,7 +17,7 @@
               <td><%= score.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
               <td><%= score.point %></td>
               <td><%= link_to '編集', edit_bowling_center_score_path(id: score) %></td>
-              <td><%= link_to '削除', "/bowling_centers/#{bowling_center.id}/scores/#{score.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to '削除', "/bowling_centers/#{@bowling_center.id}/scores/#{score.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

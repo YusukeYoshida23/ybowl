@@ -1,9 +1,10 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /scores or /scores.json
   def index
-    @scores = Score.all
+    @score = Score.where(user_id: current_user.id, bowling_center_id: params[:bowling_center_id])
     @bowling_center = BowlingCenter.find(params[:bowling_center_id])
   end
 
@@ -65,7 +66,7 @@ class ScoresController < ApplicationController
     @score.destroy
 
     respond_to do |format|
-      format.html { redirect_to scores_url, notice: "Score was successfully destroyed." }
+      format.html { redirect_to bowling_center_scores_url, notice: "Score was successfully destroyed." }
       format.json { head :no_content }
     end
   end

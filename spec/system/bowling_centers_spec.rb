@@ -11,12 +11,12 @@ RSpec.describe "BowlingCenters", type: :system do
     end
 
     it "returns http success" do
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
     it "ボウリング場名をクリックするとボウリング場詳細に移動する" do
       click_on bowling_center.name
-      expect(current_path).to eq bowling_center_path
+      expect(page).to have_current_path bowling_center_path, ignore_query: true
     end
   
   #削除が機能している
@@ -25,14 +25,14 @@ RSpec.describe "BowlingCenters", type: :system do
       within("#new_bowling_center") do
         click_on "ボウリング場を登録する"
       end
-      expect(current_path).to eq new_bowling_center_path
+      expect(page).to have_current_path new_bowling_center_path, ignore_query: true
     end
 
     it "「トップに戻る」が機能している" do
       within("#root") do
         click_on "トップに戻る"
       end
-      expect(current_path).to eq root_path
+      expect(page).to have_current_path root_path, ignore_query: true
     end
   end
 
@@ -43,14 +43,24 @@ RSpec.describe "BowlingCenters", type: :system do
     end
 
     it "returns http success" do
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
     # クリエイトアクションのテスト new→create→show
 
-    #ボウリング場一覧が機能している
+    it "「ボウリング場一覧」が機能している" do
+      within("#bowling_centers") do
+        click_on "ボウリング場一覧"
+      end
+      expect(page).to have_current_path bowling_centers_path, ignore_query: true
+    end
     
-    #トップに戻るが機能している
+    it "「トップに戻る」が機能している" do
+      within("#root") do
+        click_on "トップに戻る"
+      end
+      expect(page).to have_current_path root_path, ignore_query: true
+    end
     
   end
 
@@ -62,7 +72,7 @@ RSpec.describe "BowlingCenters", type: :system do
     end
 
     it "returns http success" do
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
     it "returns bowling_center information" do
@@ -74,13 +84,33 @@ RSpec.describe "BowlingCenters", type: :system do
 
     # it '入力した住所を基に地図が表示される' do end
 
-    #スコアを入力するが機能している
+    it "「スコアを入力する」が機能している" do
+      within("#new_score") do
+        click_on "スコアを入力する"
+      end
+      expect(page).to have_current_path new_bowling_center_score_path, ignore_query: true
+    end
 
-    #スコア一覧を見るが機能している
+    it "「スコア一覧を見る」が機能している" do
+      within("#scores") do
+        click_on "スコア一覧を見る"
+      end
+      expect(page).to have_current_path bowling_center_score_path, ignore_query: true
+    end
 
-    #ボウリング場一覧に戻るが機能している
-
-    #トップに戻るが機能している
+    it "「ボウリング場一覧に戻る」が機能している" do
+      within("#bowling_centers") do
+        click_on "ボウリング場一覧に戻る"
+      end
+      expect(page).to have_current_path bowling_centers_path, ignore_query: true
+    end
+    
+    it "「トップに戻る」が機能している" do
+      within("#root") do
+        click_on "トップに戻る"
+      end
+      expect(page).to have_current_path root_path, ignore_query: true
+    end
   end
   
 end
