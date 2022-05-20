@@ -80,6 +80,7 @@ RSpec.describe "Scores", type: :system do
     before do
       get new_bowling_center_score_path(bowling_center.id)
       visit new_bowling_center_score_path(bowling_center.id)
+      login user
     end
 
     it "returns http success" do

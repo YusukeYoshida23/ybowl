@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe "BowlingCenters", type: :system do
   let!(:bowling_center) { create(:bowling_center)}
   let!(:score) { create(:score)}
+  let(:user) { create(:user)}
 
   describe "GET #index" do
     before do
+      sign_in user
       get bowling_centers_path
       visit bowling_centers_path
     end
@@ -38,6 +40,7 @@ RSpec.describe "BowlingCenters", type: :system do
 
   describe "GET #new" do
     before do
+      sign_in user
       get new_bowling_center_path
       visit new_bowling_center_path
     end
@@ -67,6 +70,7 @@ RSpec.describe "BowlingCenters", type: :system do
 
   describe "GET #show" do
     before do
+      sign_in user
       get bowling_center_path(bowling_center.id)
       visit bowling_center_path(bowling_center.id)
     end

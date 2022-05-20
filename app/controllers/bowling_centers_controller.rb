@@ -1,5 +1,6 @@
 class BowlingCentersController < ApplicationController
   before_action :set_bowling_center, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /bowling_centers or /bowling_centers.json
   def index
