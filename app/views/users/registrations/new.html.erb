@@ -1,44 +1,51 @@
-<h2>登録</h2>
+<div class="container justify-content-center">
+  <h2 class="text-center">新規登録</h2>
+  <div class="sign-up-body">
+    <div class="sign-up-form">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+        <div class="field d-inline-block text-left">
+          <%= f.label :アカウント名 %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :アカウント名 %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        <div class="field">
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上必要です)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :パスワード%><i>(確認)</i><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :プロフィール画像 %><br />
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="field">
+          <%= f.label :お気に入りのボール %><br />
+          <%= f.text_field :favorite_ball, autocomplete: "favorite_ball" %>
+        </div>
+
+        <div class="actions text-center mt-4">
+          <%= f.submit "登録" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary m-3"><%= link_to "ログイン", new_user_session_path %></button>
+    <button type="button" class="btn btn-outline-dark m-3"><%= link_to "トップに戻る", root_path %></button>
   </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード%><i>(確認)</i><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
- <div class="field">
-    <%= f.label :プロフィール画像 %><br />
-    <%= f.file_field :image %>
-  </div>
-
-  <div class="field">
-    <%= f.label :お気に入りのボール %><br />
-    <%= f.text_field :favorite_ball, autocomplete: "favorite_ball" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "登録" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
