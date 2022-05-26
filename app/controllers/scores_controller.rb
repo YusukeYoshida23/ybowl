@@ -35,7 +35,7 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if @score.save!
-        format.html { redirect_to bowling_center_scores_path(@bowling_center, @score), notice: "Score was successfully created." }
+        format.html { redirect_to bowling_center_scores_path(@bowling_center, @score), notice: "スコアを登録しました" }
         format.json { render :index, status: :created, location: @score }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class ScoresController < ApplicationController
     
     respond_to do |format|
       if @score.update(score_params)
-        format.html { redirect_to bowling_center_score_path(@bowling_center, @score), notice: "Score was successfully updated." }
+        format.html { redirect_to bowling_center_scores_path(@bowling_center, @score), notice: "スコアを編集しました" }
         format.json { render :show, status: :ok, location: @score }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -66,7 +66,7 @@ class ScoresController < ApplicationController
     @score.destroy
 
     respond_to do |format|
-      format.html { redirect_to bowling_center_scores_url, notice: "Score was successfully destroyed." }
+      format.html { redirect_to bowling_center_scores_url, notice: "スコアを削除しました" }
       format.json { head :no_content }
     end
   end

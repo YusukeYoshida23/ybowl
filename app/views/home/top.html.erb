@@ -1,4 +1,4 @@
 <div class="container d-flex justify-content-center">
-  <button type="button" class="btn btn-primary btn-lg w-100 h-100 m-3" id="new_bowling_center"><%= link_to "ボウリング場を登録する", new_bowling_center_path, class:"text-decoration-none text-white" %></button>
-  <button type="button" class="btn btn-outline-primary btn-lg w-100 h-100 m-3" id="bowling_centers"><%= link_to "ボウリング場一覧", bowling_centers_path, class:"text-decoration-none" %></button>
+  <%= link_to "ボウリング場を登録する", new_bowling_center_path, class:"btn btn-primary btn-lg w-100 h-100 m-3 text-white", id:"new_bowling_center" %>
+  <%= link_to "ボウリング場一覧", bowling_centers_path, class:"btn btn-outline-primary btn-lg w-100 h-100 m-3", id:"bowling_centers" %>
 </div>

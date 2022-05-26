@@ -16,8 +16,8 @@
               <td><%= index %></td>
               <td><%= score.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
               <td><%= score.point %></td>
-              <td><%= link_to '編集', edit_bowling_center_score_path(id: score) %></td>
-              <td><%= link_to '削除', "/bowling_centers/#{@bowling_center.id}/scores/#{score.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to '編集', edit_bowling_center_score_path(id: score), class:"text-decoration-none" %></td>
+              <td><%= link_to '削除', "/bowling_centers/#{@bowling_center.id}/scores/#{score.id}", method: :delete, data: { confirm: '本当に削除しますか？' }, class:"text-decoration-none" %></td>
             </tr>
           <% end %>
         </tbody>
@@ -49,9 +49,9 @@
     </div>
   </div>
   <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-danger m-3"><%= link_to "スコアを入力する", new_bowling_center_score_path(@bowling_center) %></button>
-    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'ボウリング場詳細に戻る', @bowling_center %></button>
-    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'ボウリング場一覧', bowling_centers_path %></button>
-    <button type="button" class="btn btn-outline-dark m-3"><%= link_to 'トップに戻る', root_path %></button>
+    <%= link_to "スコアを入力する", new_bowling_center_score_path(@bowling_center), class:"btn btn-danger m-3" %>
+    <%= link_to 'ボウリング場詳細に戻る', @bowling_center, class:"btn btn-outline-primary m-3" %>
+    <%= link_to 'ボウリング場一覧', bowling_centers_path, class:"btn btn-outline-primary m-3" %>
+    <%= link_to 'トップに戻る', root_path, class:"btn btn-outline-dark m-3" %>
   </div>
 </div>

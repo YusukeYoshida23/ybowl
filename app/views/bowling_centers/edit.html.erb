@@ -1,8 +1,8 @@
 <div class="container justify-content-center">
   <%= render 'form', bowling_center: @bowling_center %>
   <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'ボウリング場詳細に戻る', @bowling_center %></button>
-    <button type="button" class="btn btn-outline-primary m-3"><%= link_to 'ボウリング場一覧', bowling_centers_path %></button>
-    <button type="button" class="btn btn-outline-dark m-3"><%= link_to 'トップに戻る', root_path %></button>
+    <%= link_to 'ボウリング場詳細に戻る', @bowling_center, class:"btn btn-outline-primary m-3" %>
+    <%= link_to 'ボウリング場一覧', bowling_centers_path, class:"btn btn-outline-primary m-3" %>
+    <%= link_to 'トップに戻る', root_path, class:"btn btn-outline-dark m-3" %>
   </div>
 </div>

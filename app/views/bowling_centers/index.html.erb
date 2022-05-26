@@ -10,14 +10,14 @@
     <tbody>
       <% @bowling_centers.each do |bowling_center| %>
         <tr>
-          <td class="h3"><%= link_to bowling_center.name, bowling_center %></td>
-          <td class="h5"><%= link_to '削除', bowling_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="h3"><%= link_to bowling_center.name, bowling_center, class:"text-decoration-none", id:"bowling_center_name" %></td>
+          <td class="h5"><%= link_to '削除', bowling_center, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-decoration-none" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
   <div class="d-flex justify-content-center mt-3">
-    <button type="button" class="btn btn-primary m-3" id="new_bowling_center"><%= link_to 'ボウリング場を登録する', new_bowling_center_path %></button>
-    <button type="button" class="btn btn-outline-dark m-3" id="root"><%= link_to 'トップに戻る', root_path %></button>
+    <%= link_to 'ボウリング場を登録する', new_bowling_center_path, class:"btn btn-primary m-3 text-white", id:"new_bowling_center" %>
+    <%= link_to 'トップに戻る', root_path, class:"btn btn-outline-dark m-3", id:"root" %>
   </div>
 </div>

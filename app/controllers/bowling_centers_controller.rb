@@ -28,7 +28,7 @@ class BowlingCentersController < ApplicationController
 
     respond_to do |format|
       if @bowling_center.save
-        format.html { redirect_to bowling_center_url(@bowling_center), notice: "Bowling center was successfully created." }
+        format.html { redirect_to bowling_center_url(@bowling_center), notice: "ボウリング場を登録しました" }
         format.json { render :show, status: :created, location: @bowling_center }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class BowlingCentersController < ApplicationController
   def update
     respond_to do |format|
       if @bowling_center.update(bowling_center_params)
-        format.html { redirect_to bowling_center_url(@bowling_center), notice: "Bowling center was successfully updated." }
+        format.html { redirect_to bowling_center_url(@bowling_center), notice: "ボウリング場を編集しました" }
         format.json { render :show, status: :ok, location: @bowling_center }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class BowlingCentersController < ApplicationController
     @bowling_center.destroy
 
     respond_to do |format|
-      format.html { redirect_to bowling_centers_url, notice: "Bowling center was successfully destroyed." }
+      format.html { redirect_to bowling_centers_url, notice: "ボウリング場を削除しました" }
       format.json { head :no_content }
     end
   end

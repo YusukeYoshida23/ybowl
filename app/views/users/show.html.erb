@@ -12,7 +12,7 @@
   <p class="text-center">お気に入りのボール：<%= @user.favorite_ball %></p>
 
   <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-primary m-3" id="edit_user"><%= link_to "編集", edit_user_registration_path %></button>
-    <button type="button" class="btn btn-outline-primary m-3"><%= link_to "トップに戻る", root_path %></button>
+    <%= link_to "編集", edit_user_registration_path, class:"btn btn-outline-primary m-3", id:"edit_user" %>
+    <%= link_to "トップに戻る", root_path, class:"btn btn-outline-primary m-3" %>
   </div>
 </div>

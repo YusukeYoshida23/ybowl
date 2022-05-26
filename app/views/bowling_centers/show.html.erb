@@ -18,20 +18,20 @@
               <td><%= @bowling_center.address %></td>
               <td><%= @bowling_center.phone_number %></td>
               <td><%= @bowling_center.hp %></td>
-              <td><%= link_to '編集', [:edit, :bowling_center] %></td>
+              <td><%= link_to '編集', [:edit, :bowling_center], class:"text-decoration-none" %></td>
             </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div id="map" class="text-center"></div>
+  <div id="map" class="justify-content-center"></div>
   <div class="d-flex justify-content-center mt-3">
-    <button type="button" class="btn btn-danger m-3" id="new_score"><%= link_to "スコアを入力する", new_bowling_center_score_path(@bowling_center) %></button>
-    <button type="button" class="btn btn-outline-danger m-3" id="scores"><%= link_to "スコア一覧を見る", bowling_center_scores_path(@bowling_center, @score) %></button>
+    <%= link_to "スコアを入力する", new_bowling_center_score_path(@bowling_center), class:"btn btn-danger m-3" %>
+    <%= link_to "スコア一覧を見る", bowling_center_scores_path(@bowling_center, @score), class:"btn btn-outline-danger m-3" %>
   </div>
   <div class="d-flex justify-content-center mt-1">
-    <button type="button" class="btn btn-outline-primary m-3" id="bowling_centers"><%= link_to 'ボウリング場一覧に戻る', bowling_centers_path %></button>
-    <button type="button" class="btn btn-outline-dark m-3" id="root"><%= link_to 'トップに戻る', root_path %></button>
+    <%= link_to 'ボウリング場一覧に戻る', bowling_centers_path, class:"btn btn-outline-primary m-3" %>
+    <%= link_to 'トップに戻る', root_path, class:"btn btn-outline-dark m-3" %>
   </div>
 </div>
 
