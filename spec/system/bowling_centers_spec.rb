@@ -81,8 +81,8 @@ RSpec.describe "BowlingCenters", type: :system do
 
     it "ボウリング場の登録が機能している" do
       expect do
-        post :create, params: {name: "ABCセンター", address: "大阪府大阪市中央区1-2-3", phone_number: "0612345678", hp: "https://www.abc.co.jp"}
-      end.to change(BowlingCenter, :count).by(1)
+        post bowling_centers_path, params: {name: "ABCセンター", address: "大阪府大阪市中央区1-2-3", phone_number: "0612345678", hp: "https://www.abc.co.jp"}
+      end.to change{BowlingCenter.count}.by(1)
     end
 
     # it "登録後のリダイレクトが機能している" do
@@ -119,7 +119,7 @@ RSpec.describe "BowlingCenters", type: :system do
 
     it "「スコア一覧を見る」が機能している" do
       click_on "スコア一覧を見る"
-      expect(page).to have_current_path bowling_center_score_path(bowling_center, score), ignore_query: true
+      expect(page).to have_current_path bowling_center_scores_path(bowling_center), ignore_query: true
     end
 
     it "「ボウリング場一覧に戻る」が機能している" do
@@ -182,7 +182,7 @@ RSpec.describe "BowlingCenters", type: :system do
 
     let(:update_bowling_center) do
       {
-        name: "ABCセンター",
+        name: "123センター",
         address: "大阪府茨木市1-2-3",
         phone_number: "0721234567",
         hp: "https://www.123.co.jp"
@@ -191,7 +191,7 @@ RSpec.describe "BowlingCenters", type: :system do
 
     it "ボウリング場の更新が機能している" do
       expect do
-        patch :update, params:{id: bowling_center.id, bowling_center: update_bowling_center}
+        patch bowling_center_path, params:{id: bowling_center.id, bowling_center: update_bowling_center}
       end.to change(BowlingCenter, :count).by(0)
     end
   end

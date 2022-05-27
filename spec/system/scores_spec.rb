@@ -11,9 +11,6 @@ RSpec.describe "Scores", type: :system do
       fill_in "session_email", with: "test1@example.com"
       fill_in "session_password", with: "test0401"
       find("#login").click
-      visit new_bowling_center_score_path(bowling_center)
-      fill_in "point", with: "150"
-      click_on "登録する"
       get bowling_center_scores_path(bowling_center.id)
       visit bowling_center_scores_path(bowling_center.id)
     end
@@ -104,7 +101,7 @@ RSpec.describe "Scores", type: :system do
 
     it "スコアの登録が機能している" do
       expect do
-        post :create, params: {point:150}
+        post bowling_center_scores_path params: {point:150}
       end.to change(Score, :count).by(1)
     end
 
@@ -174,7 +171,7 @@ RSpec.describe "Scores", type: :system do
 
     it "スコアの更新が機能している" do
       expect do
-        patch :update, params:{id: score.id, score: update_score}
+        patch bowling_center_score_path params:{id: score.id, score: update_score}
       end.to change(Score, :count).by(0)
     end
   end
