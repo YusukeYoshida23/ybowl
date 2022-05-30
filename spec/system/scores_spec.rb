@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Scores", type: :system do
   let!(:bowling_center) { create(:bowling_center)}
   let!(:user) {create(:user, email:"test1@example.com", password:"test0401")}
-  let!(:score) { create(:score)}
+  let!(:score) { create(:score, user_id: user.id, bowling_center_id: bowling_center.id)}
 
   describe "GET #index" do
     before do
@@ -101,7 +101,7 @@ RSpec.describe "Scores", type: :system do
 
     it "スコアの登録が機能している" do
       expect do
-        post bowling_center_scores_path params: {point:150}
+        post bowling_center_scores_path params: {point:160}
       end.to change(Score, :count).by(1)
     end
 

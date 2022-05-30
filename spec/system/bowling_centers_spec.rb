@@ -81,8 +81,9 @@ RSpec.describe "BowlingCenters", type: :system do
 
     it "ボウリング場の登録が機能している" do
       expect do
-        post bowling_centers_path, params: {name: "ABCセンター", address: "大阪府大阪市中央区1-2-3", phone_number: "0612345678", hp: "https://www.abc.co.jp"}
-      end.to change{BowlingCenter.count}.by(1)
+        post bowling_centers_path, params: {name: "ASDセンター", address: "大阪府大阪市西区1-2-3", phone_number: "0123456789", hp: "https://www.asd.co.jp"}
+        binding.pry
+      end.to change(BowlingCenter, :count).by(1)
     end
 
     # it "登録後のリダイレクトが機能している" do

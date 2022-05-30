@@ -36,9 +36,6 @@
 </div>
 
 <script type="text/javascript">
-  const GOOGLE_MAP_API = config.apikey;
-  console.log(GOOGLE_MAP_API)
-
   function initMap() {
     var test = {lat: <%= @bowling_center.latitude %>, lng: <%= @bowling_center.longitude %>};
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -65,5 +62,5 @@
   }
 </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=GOOGLE_MAP_API&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
 </script>

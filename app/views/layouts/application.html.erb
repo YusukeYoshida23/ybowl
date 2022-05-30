@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ybowl</title>
+    <title>Scorer for Bowlers</title>
     <%= favicon_link_tag('icons8-ボウリング-64.png') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -18,7 +18,7 @@
         <% if current_user %>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <%= link_to "Bowling Scores", root_path, class:"text-decoration-none mt-1 ms-5 fs-1", id:"logo" %>
+              <%= link_to "Scorer for Bowlers", root_path, class:"text-decoration-none mt-1 ms-5 fs-1", id:"logo" %>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -36,7 +36,7 @@
             </div>
           </nav>
         <% else %>
-          <%= link_to "Bowling Scores", root_path, class:"text-decoration-none mt-1 ms-5 fs-1" ,id:"logo" %>
+          <%= link_to "Scorer for Bowlers", root_path, class:"text-decoration-none mt-1 ms-5 fs-1" ,id:"logo" %>
           <div class="d-flex justify-content-end">
             <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-primary me-3 text-decoration-none text-white" %>
             <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary me-3 text-decoration-none text-white" %>
@@ -46,9 +46,7 @@
       </div>
     </header>
     <p class="alert"><%= alert %></p>
-    <div class="back-img">
       <%= yield %>
-    </div>
     <footer class="bg-dark text-center text-light p-5 mt-5"">
       (c) ybowlproject
     </footer>
