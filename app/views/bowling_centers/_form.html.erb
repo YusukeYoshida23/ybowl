@@ -15,19 +15,19 @@
     <table id="form">
       <tr>
         <th><i style="color:red;">(必須)</i><%= form.label :name , "ボウリング場名" %></th>
-        <td><%= form.text_field :name %></td>
+        <td><%= form.text_field :name, id:"bowling_center_name" %></td>
       </tr>
       <tr>
         <th><i style="color:red;">(必須)</i><%= form.label :address , "住所" %></th>
-        <td><%= form.text_field :address %></td>
+        <td><%= form.text_field :address, id:"bowling_center_address" %></td>
       </tr>
       <tr>
         <th><%= form.label :phone_number , "電話番号" %></th>
-        <td><%= form.text_field :phone_number %></td>
+        <td><%= form.text_field :phone_number, id:"bowling_center_number" %></td>
       </tr>
       <tr>
         <th><%= form.label :hp , "ホームページ" %></th>
-        <td><%= form.text_field :hp %></td>
+        <td><%= form.text_field :hp, id:"bowling_center_hp" %></td>
       </tr>
     </table>
 

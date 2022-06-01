@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Scores", type: :system do
   let!(:bowling_center) { create(:bowling_center)}
-  let!(:user) {create(:user, email:"test1@example.com", password:"test0401")}
+  let!(:user) {create(:user, email: "test1@example.com", password: "test0401")}
   let!(:score) { create(:score, user_id: user.id, bowling_center_id: bowling_center.id)}
 
   describe "GET #index" do
@@ -25,14 +25,6 @@ RSpec.describe "Scores", type: :system do
       click_on "編集"
       expect(page).to have_current_path edit_bowling_center_score_path(bowling_center, score), ignore_query: true
     end
-
-    # it "MAXが機能している" do
-    #   expect(page).to have_content(score.maximum('point'))
-    # end
-
-    # it "AVEが機能している" do
-    #   expect(page).to have_content(score.average('point').floor)
-    # end
 
     it "スコアを入力するが機能している" do
       click_on "スコアを入力する"
@@ -101,14 +93,18 @@ RSpec.describe "Scores", type: :system do
 
     it "スコアの登録が機能している" do
       expect do
-        post bowling_center_scores_path params: {point:160}
+        fill_in "point", with: "150"
+        click_on "登録する"
       end.to change(Score, :count).by(1)
     end
 
-    # it "登録後のリダイレクトが機能している" do
-
-    # end
+    it "登録後のリダイレクトが機能している" do
+      fill_in "point", with: "150"
+      click_on "登録する"
+      expect(page).to have_current_path bowling_center_scores_path(bowling_center), ignore_query: true
+    end
   end
+
   describe "GET #edit" do
     before do
       visit new_user_session_path
@@ -166,12 +162,12 @@ RSpec.describe "Scores", type: :system do
     end
 
     let(:update_score) do
-      {point: 180}
+      { point: 180 }
     end
 
     it "スコアの更新が機能している" do
       expect do
-        patch bowling_center_score_path params:{id: score.id, score: update_score}
+        patch bowling_center_score_path params: { id: score.id, score: update_score }
       end.to change(Score, :count).by(0)
     end
   end
@@ -199,6 +195,6 @@ RSpec.describe "Scores", type: :system do
       score.destroy
       expect(page).to have_current_path bowling_center_scores_path(bowling_center.id)
     end
-end
+  end
 
 end

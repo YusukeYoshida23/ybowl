@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Home", type: :system do
-  let!(:user) {create(:user, email:"test1@example.com", password:"test0401")}
+  let!(:user) { create(:user, email: "test1@example.com", password: "test0401") }
 
   before do
     visit new_user_session_path

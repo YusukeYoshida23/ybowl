@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "BowlingCenters", type: :system do
   let!(:bowling_center) { create(:bowling_center)}
   let!(:score) { create(:score)}
-  let!(:user) {create(:user, email:"test1@example.com", password:"test0401")}
+  let!(:user) {create(:user, email: "test1@example.com", password: "test0401")}
 
   describe "GET #index" do
     before do
@@ -81,15 +81,22 @@ RSpec.describe "BowlingCenters", type: :system do
 
     it "ボウリング場の登録が機能している" do
       expect do
-        post bowling_centers_path, params: {name: "ASDセンター", address: "大阪府大阪市西区1-2-3", phone_number: "0123456789", hp: "https://www.asd.co.jp"}
-        binding.pry
+        fill_in "bowling_center_name", with: "ABCセンター"
+        fill_in "bowling_center_address", with: "大阪府大阪市中央区1-2-3"
+        fill_in "bowling_center_number", with: "0612345678"
+        fill_in "bowling_center_hp", with: "http://www.abcbowl.com"
+        click_on "登録する"
       end.to change(BowlingCenter, :count).by(1)
     end
 
-    # it "登録後のリダイレクトが機能している" do
-    #   post :create
-    #   expect(page).to have_current_path bowling_center_path(bowling_center)
-    # end
+    it "登録後のリダイレクトが機能している" do 
+      fill_in "bowling_center_name", with: "ABCセンター"
+      fill_in "bowling_center_address", with: "大阪府大阪市中央区1-2-3"
+      fill_in "bowling_center_number", with: "0612345678"
+      fill_in "bowling_center_hp", with: "http://www.abcbowl.com"
+      click_on "登録する"
+      expect(page).to have_current_path bowling_center_path(BowlingCenter.last)
+    end
   end
 
 
@@ -109,9 +116,6 @@ RSpec.describe "BowlingCenters", type: :system do
       expect(page).to have_content(bowling_center.phone_number)
       expect(page).to have_content(bowling_center.hp)
     end
-
-    # it '入力した住所を基に地図が表示される' do 
-    # end
 
     it "「スコアを入力する」が機能している" do
       click_on "スコアを入力する"
@@ -192,7 +196,7 @@ RSpec.describe "BowlingCenters", type: :system do
 
     it "ボウリング場の更新が機能している" do
       expect do
-        patch bowling_center_path, params:{id: bowling_center.id, bowling_center: update_bowling_center}
+        patch bowling_center_path, params: { id: bowling_center.id, bowling_center: update_bowling_center }
       end.to change(BowlingCenter, :count).by(0)
     end
   end
